@@ -1,0 +1,26 @@
+{
+  "name": "guard-v2",
+  "version": "0.0.1",
+  "description": "The guard bot reborn",
+  "main": "index.js",
+  "dependencies": {
+    "ramda": "^0.25.0",
+    "telegraf": "^3.25.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.rory.no/trgwii/Guard-v2.git"
+  },
+  "keywords": [
+    "guard",
+    "bot",
+    "reborn",
+    "v2"
+  ],
+  "author": "Thomas Rory Gummerson <thomas@gummerson.no> (https://trgwii.no/)",
+  "license": "MIT"
+}

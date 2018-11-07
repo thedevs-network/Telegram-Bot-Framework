@@ -16,7 +16,12 @@ module.exports = (token, plugins, options) =>
 							(obj, pluginName) =>
 								omit([ pluginName ], obj),
 							omit([ 'plugins' ], options[name])),
-						options[name].plugins || [],
+						(options[name].plugins || []).map(pluginName =>
+							plugin(
+								Composer,
+								options[name][pluginName],
+								options[name][pluginName].plugins || [],
+								{})),
 						{})),
 			new Telegraf(token))
 		.startPolling();

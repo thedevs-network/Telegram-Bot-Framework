@@ -1,6 +1,5 @@
 'use strict';
 
-module.exports = ({
-	Composer
-}) =>
-	Composer.hears(/ping/, Composer.reply('Pong!'));
+module.exports = C =>
+	C.hears(/ping/,
+		C.reply('Pong!'));

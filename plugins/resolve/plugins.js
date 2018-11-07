@@ -1,11 +1,12 @@
 'use strict';
 
-const plugin = require('./plugin');
+const o = require('ramda/src/o');
+const reduce = require('ramda/src/reduce');
 
 const ensureArray = require('../../utils/ensureArray');
+const plugin = require('./plugin');
 
-module.exports = plugins =>
-	ensureArray(plugins).reduce(
-		(acc, name) =>
-			({ ...acc, [name]: plugin(name) }),
-		{});
+module.exports = o(
+	reduce((acc, name) =>
+		({ ...acc, [name]: plugin(name) }), {}),
+	ensureArray);

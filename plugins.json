@@ -1,13 +1,14 @@
 {
 	"plugins": [
-		"ping",
 		"permissions"
 	],
-	"ping": {},
 	"permissions": {
-		"plugins": [],
+		"plugins": [
+			"ping"
+		],
 		"masters": [
 			75118762
-		]
+		],
+		"ping": {}
 	}
 }

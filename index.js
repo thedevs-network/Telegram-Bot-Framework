@@ -7,8 +7,8 @@ const write = require('./config/write');
 const set = require('./config/set');
 const push = require('./config/push');
 const unset = require('./config/unset');
-const enable = require('./config/enable');
-const disable = require('./config/disable');
+const add = require('./config/add');
+const remove = require('./config/remove');
 
 
 const [ command, ...args ] = process.argv.slice(2);
@@ -19,14 +19,14 @@ if (command === 'start') {
 	return start(args[0], resolve(config.plugins), config);
 }
 
-if (command === 'enable') {
-	return write(enable(
+if (command === 'add') {
+	return write(add(
 		args,
 		config));
 }
 
-if (command === 'disable') {
-	return write(disable(
+if (command === 'remove') {
+	return write(remove(
 		args,
 		config));
 }

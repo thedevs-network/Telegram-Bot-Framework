@@ -1,18 +1,21 @@
 'use strict';
 
-/* eslint-disable global-require */
-
 const { join } = require('path');
 
-const builtin = name =>
-	join(__dirname, '..', 'builtin', name);
+const o = require('ramda/src/o');
+const partial = require('ramda/src/partial');
+const partialRight = require('ramda/src/partialRight');
+const tryCatch = require('ramda/src/tryCatch');
 
-module.exports = name => {
-	try {
-		return require(builtin(name));
-	} catch (err) {
-		return require(require.resolve(
-			name,
-			{ paths: [ process.cwd() ] }));
-	}
-};
+
+/* eslint-disable global-require */
+
+const builtin = partial(join, [ __dirname, '..', 'builtin' ]);
+const requireBuiltin = o(require, builtin);
+const requireRelative = o(require, partialRight(
+	require.resolve,
+	[ { paths: [ process.cwd() ] } ]));
+
+module.exports = tryCatch(
+	requireBuiltin,
+	requireRelative);

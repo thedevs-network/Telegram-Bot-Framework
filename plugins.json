@@ -1,14 +1,17 @@
 {
+	"options": {},
+	"pluginOptions": {
+		"masters": {
+			"options": [
+				75118762
+			],
+			"pluginOptions": {},
+			"plugins": [
+				"ping"
+			]
+		}
+	},
 	"plugins": [
 		"masters"
-	],
-	"masters": {
-		"plugins": [
-			"ping"
-		],
-		"ping": {},
-		"masters": [
-			75118762
-		]
-	}
+	]
 }

@@ -2,7 +2,9 @@
 
 const { writeFileSync } = require('fs');
 
-const file = require('./file');
+const write = (name, data) =>
+	writeFileSync(
+		name,
+		JSON.stringify(data, null, '\t'));
 
-module.exports = config =>
-	writeFileSync(file, JSON.stringify(config, null, '\t'));
+module.exports = write;

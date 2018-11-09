@@ -1,29 +1,40 @@
 'use strict';
 
-const resolve = require('./plugins/resolve/plugins');
-const start = require('./bot/start');
-const read = require('./config/read');
-const write = require('./config/write');
-const set = require('./config/set');
-const push = require('./config/push');
-const unset = require('./config/unset');
-const add = require('./config/add');
-const remove = require('./config/remove');
+/* eslint-disable global-require */
+
+const load = require('./config/load');
 
 
 const [ command, ...args ] = process.argv.slice(2);
 
-const config = read();
+const config = load(
+	__dirname,
+	process.env,
+	'plugins.json');
 
 if (command === 'start') {
-	return start(args[0], resolve(config.plugins), config);
+	const Composer = require('telegraf/composer');
+	const start = require('./bot/start');
+	const load = require('./plugins/load');
+	return start(
+		args[0] || process.env.TOKEN || config.options.token,
+		config.plugins.map(plugin =>
+			load(
+				process.cwd(),
+				plugin,
+				(config.pluginOptions || {})[plugin] || {},
+				Composer,
+				{})));
 }
 
+const write = require('./config/write');
+
 if (command === 'add') {
-	return write(add(
-		args,
-		config));
+	const add = require('./command/add');
+	return write('plugins.json', add(config, args));
 }
+
+// TODO below
 
 if (command === 'remove') {
 	return write(remove(

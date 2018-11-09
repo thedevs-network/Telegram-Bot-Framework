@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = (C, opts, plugins) =>
-	C.acl(opts.masters,
+module.exports = (C, masters, plugins) =>
+	C.acl(masters,
 		C.compose(plugins));

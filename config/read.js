@@ -2,7 +2,9 @@
 
 const { readFileSync } = require('fs');
 
-const file = require('./file');
+const read = file =>
+	typeof file === 'string'
+		? JSON.parse(readFileSync(file))
+		: file;
 
-module.exports = () =>
-	JSON.parse(readFileSync(file));
+module.exports = read;

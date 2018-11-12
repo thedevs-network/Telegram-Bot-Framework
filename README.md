@@ -1,5 +1,7 @@
 # Telegram Bot Framework
 
+(**Note: this project is still under heavy development, not safe for production use yet!**)
+
 ## Usage:
 
 	tbf start <token>

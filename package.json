@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "The guard bot reborn",
   "main": "index.js",
+  "bin": "./cli.js",
   "dependencies": {
     "ramda": "^0.25.0",
     "telegraf": "^3.25.0"
